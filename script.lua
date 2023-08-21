@@ -20,6 +20,83 @@ for _, v in ipairs(connections) do
 	v:Disable()
 end
 
+local FillColor = Color3.fromRGB(175, 25, 255)
+local DepthMode = "AlwaysOnTop"
+local FillTransparency = 0.5
+local OutlineColor = Color3.fromRGB(255, 255, 255)
+local OutlineTransparency = 0
+
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local connections = {}
+local highlightingEnabled = true
+
+local Storage = Instance.new("Folder")
+Storage.Parent = CoreGui
+Storage.Name = "Highlight_Storage"
+
+local function Highlight(plr)
+    if not highlightingEnabled or plr == LocalPlayer then
+        return
+    end
+
+    local Highlight = Instance.new("Highlight")
+    Highlight.Name = plr.Name
+    Highlight.FillColor = FillColor
+    Highlight.DepthMode = DepthMode
+    Highlight.FillTransparency = FillTransparency
+    Highlight.OutlineColor = OutlineColor
+    Highlight.OutlineTransparency = OutlineTransparency
+    Highlight.Parent = Storage
+    
+    local plrchar = plr.Character
+    if plrchar then
+        Highlight.Adornee = plrchar
+    end
+
+    connections[plr] = plr.CharacterAdded:Connect(function(char)
+        Highlight.Adornee = char
+    end)
+end
+
+local function Unhighlight(plr)
+    local highlight = Storage:FindFirstChild(plr.Name)
+    if highlight then
+        highlight:Destroy()
+    end
+end
+
+Players.PlayerAdded:Connect(Highlight)
+for _, player in ipairs(Players:GetPlayers()) do
+    Highlight(player)
+end
+
+Players.PlayerRemoving:Connect(function(plr)
+    Unhighlight(plr)
+    if connections[plr] then
+        connections[plr]:Disconnect()
+        connections[plr] = nil
+    end
+end)
+
+UserInputService.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.P then
+        highlightingEnabled = not highlightingEnabled
+        if not highlightingEnabled then
+            for _, player in ipairs(Players:GetPlayers()) do
+                Unhighlight(player)
+            end
+        else
+            for _, player in ipairs(Players:GetPlayers()) do
+                Highlight(player)
+            end
+        end
+    end
+end)
+
+
 getgenv = getgenv
 Drawing = Drawing
 getrawmetatable = getrawmetatable
