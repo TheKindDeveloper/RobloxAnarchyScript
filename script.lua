@@ -1,4 +1,4 @@
-local OrionLib = loadstring(game:HttpGet(('https://github.com/shlexware/Orion/blob/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "🔓 Anarchy v1.0", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
