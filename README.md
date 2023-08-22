@@ -1,6 +1,6 @@
 # Anarchy Script 🔫
 
-## hi
+### hi
 - (🔫): Best Silent Aim for Anarchy.
 - (👥): Best ESP to track people, clean design
 
