@@ -1,5 +1,9 @@
 # **Anarchy Script**
 
+```lua
+loadstring(game:HttpGet('https://raw.githubusercontent.com/TheKindDeveloper/RobloxAnarchyScript/main/script.lua'))()
+```
+
 ### Including:
 - (🔫): Best Silent Aim for Anarchy.
 - (👥): Best ESP to track people, clean design.
