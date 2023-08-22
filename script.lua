@@ -1,4 +1,4 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/TheKindDeveloper/AnarchyGui/main/W')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "🔓 Anarchy v1.0", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
@@ -160,45 +160,6 @@ local OtherTab = Window:MakeTab({
    })
 
    OtherTab:AddButton({
-    Name = "Teleport to Bike",
-    Callback = function ()
-        local player = game.Players.LocalPlayer
-
-        local motorcycle = workspace:WaitForChild("Motorcycle")
-        
-        local function teleportToMotorcycle()
-            local character = player.Character
-            if character then
-                local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-                humanoidRootPart.CFrame = CFrame.new(motorcycle.Position + Vector3.new(0, 5, 0))
-            end
-        end
-        
-        game:GetService("UserInputService").InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                teleportToMotorcycle()
-            end
-        end)          
-    end
-   })
-
-   OtherTab:AddButton({
-    Name = "Remove Leaderboard",
-    Callback = function ()
-        local winsBoard = workspace:WaitForChild("WinsBoard")
-        if winsBoard then
-            local ReplicatedStorage = game:GetService("ReplicatedStorage")
-            local destroyEvent = Instance.new("RemoteEvent")
-            destroyEvent.Name = "DestroyWinsBoardEvent"
-            destroyEvent.Parent = ReplicatedStorage
-            destroyEvent:FireAllClients()
-            wait(2)
-            winsBoard:Destroy()
-        end  
-    end
-   })
-
-   OtherTab:AddButton({
     Name = "Silent Aim (C)",
     Callback = function()
         getgenv().Prediction =  (  0.01  )
@@ -336,5 +297,5 @@ OrionLib:MakeNotification({
 	Name = "Loading",
 	Content = "Anarchy v.1.0 😈",
 	Image = "rbxassetid://4483345998",
-	Time = 5
+	Time = 10
 })
