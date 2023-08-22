@@ -1,4 +1,4 @@
-# Anarchy Script 🔫
+# **Anarchy Script**
 
 ### Including:
 - (🔫): Best Silent Aim for Anarchy.
