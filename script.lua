@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/TheKindDeveloper/AnarchyGui/main/W')))()
 
-local Window = OrionLib:MakeWindow({Name = "🔓 Anarchy v1.0", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "🔓 Anarchy v1.0", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
 local PlayerTab = Window:MakeTab({
     Name = "Player",
@@ -195,7 +195,8 @@ local OtherTab = Window:MakeTab({
             wait(2)
             winsBoard:Destroy()
         end  
-    end})
+    end
+   })
 
    OtherTab:AddButton({
     Name = "Silent Aim (C)",
