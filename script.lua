@@ -334,7 +334,7 @@ local OtherTab = Window:MakeTab({
 
 OrionLib:MakeNotification({
 	Name = "Loading",
-	Content = "Anarchy v.1.0 by @hahahahahahahahahha.",
+	Content = "Anarchy v.1.0 😈",
 	Image = "rbxassetid://4483345998",
 	Time = 5
 })
