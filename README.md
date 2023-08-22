@@ -1,3 +1,3 @@
 # RobloxAnarchyScript
 
-![image](https://github.com/TheKindDeveloper/RobloxAnarchyScript/assets/129861526/846f80fe-d526-4ab8-91cc-163305692022)
+![image](https://github.com/TheKindDeveloper/RobloxAnarchyScript/assets/129861526/34dbd3dc-a9f1-4b19-b513-6cf75b9c75f7)
