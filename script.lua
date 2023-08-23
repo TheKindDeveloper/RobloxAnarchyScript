@@ -7,6 +7,26 @@ local PlayerTab = Window:MakeTab({
     Icon = "https://media.discordapp.net/attachments/1141033469636530196/1143228253197307904/Screenshot_2023-06-30_185332.png?width=273&height=431",
     PremiumOnly = false
    })
+
+   local section = PlayerTab:AddSection({
+    Name = "🤖 Character"
+   })
+
+   PlayerTab:AddButton({
+    Name = "Force Reset",
+    Callback = function ()
+        local player = game.Players.LocalPlayer
+
+        local function resetCharacter()
+            local character = player.Character
+            if character then
+                character:BreakJoints() 
+            end
+        end
+        
+        resetCharacter()
+    end
+   })
    
    local Section = PlayerTab:AddSection({
     Name = "👤 Movement"
@@ -23,6 +43,33 @@ local PlayerTab = Window:MakeTab({
     Callback = function(Value)
      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
     end    
+   })
+
+   PlayerTab:AddButton({
+    Name = "Infinite Jump",
+    Callback = function ()
+        local UserInputService = game:GetService("UserInputService")
+        local infJumpDebounce = false
+        local infJump
+        
+        local function infiniteJump()
+            if infJump then
+                infJump:Disconnect()
+            end
+        
+            infJumpDebounce = false
+            infJump = UserInputService.JumpRequest:Connect(function()
+                if not infJumpDebounce then
+                    infJumpDebounce = true
+                    game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+                    wait()
+                    infJumpDebounce = false
+                end
+            end)
+        end
+        
+        infiniteJump()
+    end
    })
 
    PlayerTab:AddButton({
@@ -341,6 +388,27 @@ local NextTab = Window:MakeTab({
         end  
     end
 })
+
+local xtap = Window:MakeTab({
+    Name = "Cam",
+    Icon = "https://media.discordapp.net/attachments/1141033469636530196/1143228253197307904/Screenshot_2023-06-30_185332.png?width=273&height=431",
+    PremiumOnly = false
+   })
+
+   local Section = xtap:AddSection({
+    Name = "📷 Cam"
+   })
+
+   xtap:AddButton({
+    Name = "Infinite Zoom",
+    Callback = function ()
+        local player = game.Players.LocalPlayer
+        if player.CameraMaxZoomDistance then
+            player.CameraMaxZoomDistance = 5000
+        end
+    end
+   })
+
 
    OrionLib:Init()
 
