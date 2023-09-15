@@ -211,7 +211,7 @@ local OtherTab = Window:MakeTab({
     Callback = function()
         getgenv().Prediction =  (  0.01  )
 
-        getgenv().FOV =  (  300  ) 
+        getgenv().FOV =  (  200  ) 
 
         getgenv().AimKey =  (  "c"  )
 
